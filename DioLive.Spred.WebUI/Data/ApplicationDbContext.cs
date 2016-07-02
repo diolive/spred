@@ -1,10 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using DioLive.Spred.WebUI.Models;
+
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using DioLive.Spred.WebUI.Models;
 
 namespace DioLive.Spred.WebUI.Data
 {

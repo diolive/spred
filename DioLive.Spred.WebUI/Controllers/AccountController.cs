@@ -1,16 +1,16 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+
+using DioLive.Spred.WebUI.Models;
+using DioLive.Spred.WebUI.Models.AccountViewModels;
+using DioLive.Spred.WebUI.Services;
+
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
-using DioLive.Spred.WebUI.Models;
-using DioLive.Spred.WebUI.Models.AccountViewModels;
-using DioLive.Spred.WebUI.Services;
 
 namespace DioLive.Spred.WebUI.Controllers
 {
@@ -463,6 +463,6 @@ namespace DioLive.Spred.WebUI.Controllers
             }
         }
 
-        #endregion
+        #endregion Helpers
     }
 }

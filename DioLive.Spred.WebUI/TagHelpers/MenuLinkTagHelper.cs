@@ -1,12 +1,8 @@
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
-using System.Threading.Tasks;
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.Routing;
-using Microsoft.AspNetCore.Mvc.TagHelpers;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
@@ -21,7 +17,9 @@ namespace DioLive.Spred.WebUI.TagHelpers
     public class MenuLinkTagHelper : TagHelper
     {
         public string ControllerName { get; set; }
+
         public string ActionName { get; set; }
+
         public string MenuText { get; set; }
 
         [ViewContext]
@@ -47,7 +45,6 @@ namespace DioLive.Spred.WebUI.TagHelpers
             {
                 output.Attributes.SetAttribute("class", "active item blue");
             }
-
         }
     }
 }

@@ -1,13 +1,16 @@
 @model ExternalLoginConfirmationViewModel
+
 @{
-    ViewData["Title"] = "Register";
+    ViewData["PageTitle"] = "Register";
 }
 
-<h2 class="ui header">@ViewData["Title"]</h2>
+@section scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}
+
+<h2 class="ui header">@ViewData["PageTitle"]</h2>
 <h3 class="ui sub header">Associate your @ViewData["LoginProvider"] account</h3>
-
 <form asp-controller="Account" asp-action="ExternalLoginConfirmation" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="ui small form validate-me" role="form">
-
 
     <p class="content">
         You've successfully authenticated with <strong>@ViewData["LoginProvider"]</strong>.
@@ -17,18 +20,12 @@
     <div class="six wide field">
         <div class="ui left icon input">
             <i class="user icon"></i>
-            <input asp-for="Email" placeholder="Email address"/>
+            <input asp-for="Email" placeholder="Email address" />
             <div asp-validation-for="LoginModel.Email"></div>
         </div>
     </div>
-    <br/>
+    <br />
     <input type="submit" class="ui large blue submit button" value="Register" />
     <br />
-
     <div asp-validation-summary="All" class="ui error message"></div>
-
 </form>
-
-@section Scripts {
-    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
-}

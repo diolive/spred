@@ -1,14 +1,14 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
+using DioLive.Spred.WebUI.Models;
+using DioLive.Spred.WebUI.Models.ManageViewModels;
+using DioLive.Spred.WebUI.Services;
+
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using DioLive.Spred.WebUI.Models;
-using DioLive.Spred.WebUI.Models.ManageViewModels;
-using DioLive.Spred.WebUI.Services;
 
 namespace DioLive.Spred.WebUI.Controllers
 {
@@ -355,6 +355,6 @@ namespace DioLive.Spred.WebUI.Controllers
             return _userManager.GetUserAsync(HttpContext.User);
         }
 
-        #endregion
+        #endregion Helpers
     }
 }

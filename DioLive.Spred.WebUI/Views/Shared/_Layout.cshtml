@@ -1,14 +1,16 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @using DioLive.Spred.WebUI.Models
+
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
+
 <!doctype html>
 <html lang="">
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <title>@ViewData["Title"] - DioLive.Spred.WebUI</title>
+    <title>@ViewData["PageTitle"] · spRED</title>
     <environment names="Development">
         <link rel="stylesheet" href="~/lib/semantic/dist/semantic.css" />
         <link rel="stylesheet" href="~/css/site.css" />
@@ -31,7 +33,7 @@
             <a href="/" class="header item">DioLive.Spred.WebUI</a>
             <menulink class="blue item" asp-area="" controller-name="Home" action-name="Index" menu-text="Home"></menulink>
             <menulink class="blue item" asp-area="" controller-name="Home" action-name="About" menu-text="About"></menulink>
-            <menulink class="blue item" asp-area="" controller-name="Home" action-name="Contact" menu-text="Contact">Contact</menulink>
+            <menulink class="blue item" asp-area="" controller-name="Home" action-name="Contact" menu-text="Contact"></menulink>
             @await Html.PartialAsync("_LoginPartial")
         </div>
     </div>
@@ -62,10 +64,10 @@
         </div>
         <div class="ui vertical footer segment">
             <div class="ui container">
-                <div class="ui stackable  divided equal height stackable grid">
+                <div class="ui stackable divided equal height stackable grid">
                     <div class="three wide column">
                         <h4 class="ui header">About</h4>
-                        <div class="ui  link list">
+                        <div class="ui link list">
                             <a href="#" class="item">Sitemap</a>
                             <a href="#" class="item">Contact Us</a>
                             <a href="#" class="item">Link</a>
@@ -74,7 +76,7 @@
                     </div>
                     <div class="three wide column">
                         <h4 class="ui header">Services</h4>
-                        <div class="ui  link list">
+                        <div class="ui link list">
                             <a href="#" class="item">Service One</a>
                             <a href="#" class="item">Service Two</a>
                             <a href="#" class="item">Service Three</a>

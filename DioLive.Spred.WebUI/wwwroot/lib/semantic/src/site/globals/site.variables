@@ -1,0 +1,13 @@
+/*******************************
+     User Global Variables
+*******************************/
+
+@fontName          : 'PT Sans';
+
+@headerFont        : @fontName, 'Segoe UI', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+@pageFont          : @fontName, 'Segoe UI', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+
+@googleFontName    : @fontName;
+@importGoogleFonts : true;
+@googleFontSizes   : '400,700,400italic,700italic';
+@googleSubset      : 'latin,cyrillic';

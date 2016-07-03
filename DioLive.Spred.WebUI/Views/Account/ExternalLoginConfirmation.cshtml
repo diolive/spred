@@ -20,6 +20,13 @@
     <div class="six wide field">
         <div class="ui left icon input">
             <i class="user icon"></i>
+            <input asp-for="Name" placeholder="Name" />
+            <div asp-validation-for="LoginModel.Name"></div>
+        </div>
+    </div>
+    <div class="six wide field">
+        <div class="ui left icon input">
+            <i class="at icon"></i>
             <input asp-for="Email" placeholder="Email address" />
             <div asp-validation-for="LoginModel.Email"></div>
         </div>

@@ -5,6 +5,11 @@ namespace DioLive.Spred.WebUI.Models.AccountViewModels
     public class RegisterViewModel
     {
         [Required]
+        [StringLength(20)]
+        [Display(Name = "Display Name")]
+        public string Name { get; set; }
+
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }

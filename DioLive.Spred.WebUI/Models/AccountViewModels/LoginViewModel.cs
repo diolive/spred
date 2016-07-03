@@ -5,8 +5,8 @@ namespace DioLive.Spred.WebUI.Models.AccountViewModels
     public class LoginViewModel
     {
         [Required]
-        [EmailAddress]
-        public string Email { get; set; }
+        [StringLength(30)]
+        public string Name { get; set; }
 
         [Required]
         [DataType(DataType.Password)]

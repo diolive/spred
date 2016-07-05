@@ -6,6 +6,8 @@ namespace DioLive.Spred.WebUI.Models.ManageViewModels
 {
     public class IndexViewModel
     {
+        public string Name { get; set; }
+
         public bool HasPassword { get; set; }
 
         public IList<UserLoginInfo> Logins { get; set; }

@@ -1,4 +1,6 @@
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Threading.Tasks;
 
 using DioLive.Spred.WebUI.Models;
@@ -6,6 +8,7 @@ using DioLive.Spred.WebUI.Models.ManageViewModels;
 using DioLive.Spred.WebUI.Services;
 
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -21,18 +24,23 @@ namespace DioLive.Spred.WebUI.Controllers
         private readonly ISmsSender _smsSender;
         private readonly ILogger _logger;
 
+        private readonly MD5 _md5;
+
         public ManageController(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             IEmailSender emailSender,
             ISmsSender smsSender,
-            ILoggerFactory loggerFactory)
+            ILoggerFactory loggerFactory,
+            MD5 md5)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
             _smsSender = smsSender;
             _logger = loggerFactory.CreateLogger<ManageController>();
+
+            _md5 = md5;
         }
 
         //
@@ -56,6 +64,7 @@ namespace DioLive.Spred.WebUI.Controllers
             }
             var model = new IndexViewModel
             {
+                Name = await _userManager.GetUserNameAsync(user),
                 HasPassword = await _userManager.HasPasswordAsync(user),
                 PhoneNumber = await _userManager.GetPhoneNumberAsync(user),
                 TwoFactor = await _userManager.GetTwoFactorEnabledAsync(user),
@@ -326,6 +335,34 @@ namespace DioLive.Spred.WebUI.Controllers
             var result = await _userManager.AddLoginAsync(user, info);
             var message = result.Succeeded ? ManageMessageId.AddLoginSuccess : ManageMessageId.Error;
             return RedirectToAction(nameof(ManageLogins), new { Message = message });
+        }
+
+        public async Task<IActionResult> Photo()
+        {
+            var user = await GetCurrentUserAsync();
+            if (user.Photo != null)
+            {
+                return File(user.Photo, "image/png");
+            }
+            else
+            {
+                string hash = string.Join("", _md5.ComputeHash(Encoding.ASCII.GetBytes(user.Email.ToLowerInvariant())).Select(b => b.ToString("x2")));
+                return Redirect($"https://www.gravatar.com/avatar/{hash}?d=identicon&s=300");
+            }
+        }
+
+        public async Task<IActionResult> Avatar()
+        {
+            var user = await GetCurrentUserAsync();
+            if (user.Avatar != null)
+            {
+                return File(user.Avatar, "image/png");
+            }
+            else
+            {
+                string hash = string.Join("", _md5.ComputeHash(Encoding.ASCII.GetBytes(user.Email.ToLowerInvariant())).Select(b => b.ToString("x2")));
+                return Redirect($"https://www.gravatar.com/avatar/{hash}?d=identicon&s=35");
+            }
         }
 
         #region Helpers

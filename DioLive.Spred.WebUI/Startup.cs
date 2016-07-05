@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using DioLive.Spred.WebUI.Data;
 using DioLive.Spred.WebUI.Models;
 using DioLive.Spred.WebUI.Services;
@@ -49,6 +50,7 @@ namespace DioLive.Spred.WebUI
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
+            services.AddSingleton(MD5.Create());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -13,4 +13,8 @@ $(function () {
     }
 
     $('.ui.checkbox').checkbox();
+
+    $('.special.card .image').dimmer({
+        on: 'hover'
+    });
 });

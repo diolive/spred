@@ -11,10 +11,45 @@
 }
 
 <h3 class="ui header">Change your account settings</h3>
+<div class="ui clearing segment">
+    <h4 class="ui header">Profile</h4>
+    <div class="ui centered grid content">
+        <div class="ui five wide column">
+            <div class="ui special rounded card">
+                <div class="blurring dimmable medium image">
+                    <div class="ui dimmer">
+                        <div class="content">
+                            <div class="center">
+                                <div class="ui inverted button">Change</div>
+                            </div>
+                        </div>
+                    </div>
+                    <img src="@Url.Action("Photo", "Manage")">
+                </div>
+            </div>
+            <form asp-controller="Manage" asp-action="UpdatePhoto" method="post" class="form-horizontal" role="form">
+                <div class="ui labeled action input">
+                    <input type="file" accept="image/gif,image/jpeg,image/png" name="newPhoto" class="ui input" />
+                    <button type="submit" class="ui blue button">Update</button>
+                </div>
+            </form>
+        </div>
+        <div class="ui left aligned nine wide column">
+            <div class="ui basic segment">
+                <form asp-controller="Manage" asp-action="UpdateName" method="post" class="form-horizontal" role="form">
+                    <div class="ui labeled action input">
+                        <div class="ui label">Name:</div>
+                        <input asp-for="Name" />
+                        <button type="submit" class="ui blue button">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="ui segment">
     <h4 class="ui header">Password</h4>
     <div class="content">
-
         [@if (Model.HasPassword)
         {
             <a asp-controller="Manage" asp-action="ChangePassword">Change</a>

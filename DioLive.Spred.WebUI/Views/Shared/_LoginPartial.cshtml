@@ -8,8 +8,11 @@
     @if (SignInManager.IsSignedIn(User))
     {
         <div class="item">
-            <i class="blue user icon"></i>
-            <a asp-area="" asp-controller="Manage" asp-action="Index" title="Manage">@UserManager.GetUserName(User)</a>
+            <a asp-area="" asp-controller="Manage" asp-action="Index" title="Manage">
+                <img src="@Url.Action("Avatar", "Manage")" class="ui rounded mini spaced image" />
+                @*<i class="blue user icon"></i>*@
+                @UserManager.GetUserName(User)
+            </a>
         </div>
         <form asp-area="" asp-controller="Account" asp-action="LogOff" method="post" id="logoutForm" class="item">
             <button type="submit" class="ui button">Log off</button>

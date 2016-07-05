@@ -10,7 +10,8 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <title>@ViewData["PageTitle"] · spRED</title>
+    <link rel="icon" href="~/images/favicon.png" />
+    <title>@ViewData["PageTitle"] · Sp#RED</title>
     <environment names="Development">
         <link rel="stylesheet" href="~/lib/semantic/dist/semantic.css" />
         <link rel="stylesheet" href="~/css/site.css" />
@@ -30,8 +31,9 @@
                 <i class="sidebar icon"></i>
                 <span class="sr-only">Toggle Navigation</span>
             </a>
-            <a href="/" class="header item">DioLive.Spred.WebUI</a>
-            <menulink class="blue item" asp-area="" controller-name="Home" action-name="Index" menu-text="Home"></menulink>
+            <a class="header item" asp-area="" asp-controller="Home" asp-action="Index">
+                <img src="~/images/spred.svg" class="ui mini image" />
+            </a>
             <menulink class="blue item" asp-area="" controller-name="Home" action-name="About" menu-text="About"></menulink>
             <menulink class="blue item" asp-area="" controller-name="Home" action-name="Contact" menu-text="Contact"></menulink>
             @await Html.PartialAsync("_LoginPartial")

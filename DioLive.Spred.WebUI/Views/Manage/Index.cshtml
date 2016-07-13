@@ -20,7 +20,7 @@
                     <div class="ui dimmer">
                         <div class="content">
                             <div class="center">
-                                <div class="ui inverted button">Change</div>
+                                <div id="changePhoto" class="ui inverted button">Change</div>
                             </div>
                         </div>
                     </div>
@@ -29,7 +29,7 @@
             </div>
             <form asp-controller="Manage" asp-action="UpdatePhoto" method="post" class="form-horizontal" role="form">
                 <div class="ui labeled action input">
-                    <input type="file" accept="image/gif,image/jpeg,image/png" name="newPhoto" class="ui input" />
+                    <input id="changePhotoInput" type="file" accept="image/gif,image/jpeg,image/png" name="newPhoto" class="ui input" />
                     <button type="submit" class="ui blue button">Update</button>
                 </div>
             </form>
@@ -117,3 +117,7 @@
         }
     </div>
 </div>
+
+@section uploadPhoto{
+<script src="~/js/fileUploader.js"></script>
+}

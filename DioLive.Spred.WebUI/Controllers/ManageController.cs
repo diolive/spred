@@ -351,6 +351,21 @@ namespace DioLive.Spred.WebUI.Controllers
             }
         }
 
+        [HttpPost]
+        public async Task<IActionResult> UpdatePhoto()
+        {
+            var user = await GetCurrentUserAsync();
+            if (user.Photo != null)
+            {
+                return File(user.Photo, "image/png");
+            }
+            else
+            {
+                string hash = string.Join("", _md5.ComputeHash(Encoding.ASCII.GetBytes(user.Email.ToLowerInvariant())).Select(b => b.ToString("x2")));
+                return Redirect($"https://www.gravatar.com/avatar/{hash}?d=identicon&s=300");
+            }
+        }
+
         public async Task<IActionResult> Avatar()
         {
             var user = await GetCurrentUserAsync();
